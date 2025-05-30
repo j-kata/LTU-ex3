@@ -8,7 +8,7 @@ internal class Attack
     private ElementType Type { get; set; }
     private int BasePower { get; set; }
 
-    // TODO: check variables
+    // TODO: add validations
     public Attack(string name, ElementType type, int basePower)
     {
         Name = name;
