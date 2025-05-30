@@ -1,7 +1,12 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿using TrainerSimulator.Helpers;
 
-using TrainerSimulator;
-using TrainerSimulator.Helpers;
+namespace TrainerSimulator;
 
-Console.WriteLine("Hello, World!");
-new Attack("sdf", ElementType.Fire, 23);
+internal class Program
+{
+    private static void Main(string[] args)
+    {
+        var pokemon = Seed.GetPokemon();
+        new Simulator(pokemon).Run();
+    }
+}
