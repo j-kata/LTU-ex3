@@ -1,7 +1,9 @@
+using System.Text;
 using TrainerSimulator.Helpers;
 
 namespace TrainerSimulator.Pokemon;
 
+// TODO: rename folder. Move named classes out of this folder
 internal abstract class Pokemon
 {
     protected List<Attack> Attacks;
@@ -21,14 +23,14 @@ internal abstract class Pokemon
 
     public void RaiseLevel()
     {
-        Console.Write($"{Name} leaveled up to {++Level}");
+        Console.WriteLine($"{Name} leaveled up to {++Level}");
     }
 
     public void Attack()
     {
-        PrintAttackList();
-        var attackIndex = GetValidIndex(0, Attacks.Count);
-        PrintAttack(attackIndex);
+        var prompt = $"Choose Attack:\n{AttackList()}";
+        var attackIndex = GetValidIndex(prompt, 0, Attacks.Count);
+        PrintAttack(attackIndex - 1);
     }
 
     public void RandomAttack()
@@ -45,19 +47,22 @@ internal abstract class Pokemon
     }
 
     // TODO: Attacks.ToString()?
-    private void PrintAttackList()
+    private string AttackList()
     {
+        var builder = new StringBuilder();
         for (int i = 0; i < Attacks.Count; i++)
-            Console.WriteLine($"{i + 1}. {Attacks[i].Name}");
+            builder.AppendLine($"{i + 1}. {Attacks[i].Name}");
+        return builder.ToString();
     }
 
     // TODO: move to helpers
-    private static int GetValidIndex(int min, int max = int.MaxValue)
+    private static int GetValidIndex(string prompt, int min, int max = int.MaxValue)
     {
         int index = -1;
         bool isValid = false;
         do
         {
+            Console.WriteLine(prompt);
             var input = Console.ReadLine()?.Trim() ?? "";
 
             if (int.TryParse(input, out index))
