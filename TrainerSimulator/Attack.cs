@@ -4,7 +4,7 @@ namespace TrainerSimulator;
 
 internal class Attack
 {
-    private string Name { get; set; }
+    public string Name { get; private set; }
     private ElementType Type { get; set; }
     private int BasePower { get; set; }
 
