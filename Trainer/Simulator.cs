@@ -19,16 +19,23 @@ internal class Simulator
         {
             foreach (var pokemon in _pokemon)
             {
-                pokemon.RaiseLevel();
-                pokemon.RandomAttack();
-                //pokemon.Attack();
+                try
+                {
+                    pokemon.RaiseLevel();
+                    pokemon.RandomAttack();
+                    //pokemon.Attack();
 
-                if (pokemon is IEvolvable evolvable)
-                    evolvable.Evolve();
+                    if (pokemon is IEvolvable evolvable)
+                        evolvable.Evolve();
+                }
+                catch (Exception ex)
+                {
+                    ConsoleUI.Output($"An error occurred for {pokemon.Name}: {ex.Message}");
+                }
             }
             var prompt = "Do you want to see the next round? y/n";
             var input = ConsoleUI.GetSpecificString(prompt, ["y", "n"]);
-            if (input == "n") isRunning = false;
+            isRunning = input != "n";
         }
         
     }
