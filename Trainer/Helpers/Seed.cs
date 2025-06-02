@@ -21,14 +21,15 @@ internal static class Seed
         { "Spark", new Attack("Spark", ElementType.Electric, 8) },
     };
 
-    // TODO: add other pokemon. Is dictionary the best way?
     public static List<Pokemon> GetPokemon()
     {
         return
         [
-            new Charmander("Charmander", 3, [attacks["Flamethrower"], attacks["Ember"]]),
-            new Squirtle("Squirtle", 4, [attacks["WaterGun"], attacks["BubbleBeam"]]),
-            new Pikachu("Pikachu", 4, [attacks["ThunderShock"], attacks["Thunderbolt"]]),
+            new Charmander("Blazer", 8, [attacks["Flamethrower"], attacks["Ember"]]),
+            new Squirtle("Shellby", 8, [attacks["WaterGun"], attacks["BubbleBeam"]]),
+            new Pikachu("Sparky", 10, [attacks["ThunderShock"], attacks["Thunderbolt"]]),
+            new Psyduck("Dizzy", 10, [attacks["WaterGun"], attacks["HydroPump"]]),
+            new Vulpix("Amber", 7, [attacks["Ember"], attacks["FireSpin"]]),
         ];
     }
 }

@@ -10,7 +10,6 @@ internal class Pikachu : ElectricPokemon, IEvolvable
     public Pikachu(string name, int level, List<Attack> attacks)
         : base(name, level, attacks) { }
 
-    
     public void Evolve()
     {
         if (HasEvolved) return;
