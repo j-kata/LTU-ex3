@@ -1,4 +1,5 @@
 using Trainer.Abstractions;
+using Trainer.Helpers;
 
 namespace Trainer;
 
@@ -11,18 +12,24 @@ internal class Simulator
         _pokemon = pokemon;
     }
 
-    // TODO: it is just one loop now. Add more
     public void Run()
     {
-        foreach (var pokemon in _pokemon)
+        bool isRunning = true;
+        while (isRunning)
         {
-            pokemon.RaiseLevel();
-            pokemon.RandomAttack();
-
-            if (pokemon is IEvolvable evolvable)
+            foreach (var pokemon in _pokemon)
             {
-                evolvable.Evolve();
+                pokemon.RaiseLevel();
+                pokemon.RandomAttack();
+                //pokemon.Attack();
+
+                if (pokemon is IEvolvable evolvable)
+                    evolvable.Evolve();
             }
+            var prompt = "Do you want to see the next round? y/n";
+            var input = ConsoleUI.GetSpecificString(prompt, ["y", "n"]);
+            if (input == "n") isRunning = false;
         }
+        
     }
 }

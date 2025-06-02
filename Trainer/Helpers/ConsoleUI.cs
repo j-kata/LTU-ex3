@@ -20,6 +20,20 @@ internal static class ConsoleUI
         return num;
     }
 
+    public static string GetSpecificString(string prompt, string[] variants)
+    {
+        bool isValid;
+        string str;
+        do
+        {
+            Output(prompt);
+            str = Input();
+            isValid = variants.Contains(str, StringComparer.OrdinalIgnoreCase);
+
+        } while (!isValid);
+        return str;
+    }
+
     public static string Input()
     {
         return Console.ReadLine()?.Trim() ?? "";

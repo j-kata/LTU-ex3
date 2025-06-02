@@ -13,7 +13,7 @@ internal static class Seed
         { "FlameWheel", new Attack("Flame Wheel", ElementType.Fire, 10) },
         { "WaterGun", new Attack("Water Gun", ElementType.Water, 6) },
         { "BubbleBeam", new Attack("Bubble Beam", ElementType.Water, 10) },
-        { "Hydro Pump", new Attack("Hydro Pump", ElementType.Water, 12) },
+        { "HydroPump", new Attack("Hydro Pump", ElementType.Water, 12) },
         { "Bubble", new Attack("Bubble", ElementType.Water, 6) },
         { "WaterPulse", new Attack("Water Pulse", ElementType.Water, 10) },
         { "ThunderShock", new Attack("Thunder Shock", ElementType.Electric, 6) },
