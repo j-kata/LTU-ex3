@@ -11,9 +11,10 @@ internal class Attack
     public Attack(string name, ElementType type, int basePower)
     {
         if (string.IsNullOrWhiteSpace(name))
-        {
-            throw new ArgumentNullException($"'{nameof(name)}' can not be empty.");
-        }
+            throw new ArgumentException($"'{nameof(name)}' can not be empty.");
+
+        if (basePower <= 0)
+            throw new ArgumentException("Base power must be greater than 0", nameof(basePower));
 
         Name = name;
         Type = type;
