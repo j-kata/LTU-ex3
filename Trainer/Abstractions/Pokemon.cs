@@ -3,51 +3,76 @@ using Trainer.Helpers;
 
 namespace Trainer.Abstractions;
 
-// TODO: rename folder. Move named classes out of this folder
 internal abstract class Pokemon
 {
-    protected List<Attack> Attacks;
+    private string _name;
+    private int _level;
+    private Random _random = new();
+    protected List<Attack> Attacks { get; }
 
-    public string Name { get; set; }
-    public int Level { get; set; }
+    public string Name
+    {
+        get { return _name; }
+        set
+        {
+            if (string.IsNullOrWhiteSpace(value))
+                throw new ArgumentException($"'{nameof(value)}' can not be empty.");
+
+            if (value.Length < 2 || value.Length > 15)
+                throw new ArgumentException($"'{nameof(value)}' should be between 2 and 15 characters");
+
+            _name = value;
+        }
+    }
+
+    public int Level
+    {
+        get { return _level; }
+        set
+        {
+            if (value <= 0)
+                throw new ArgumentException("Level must be greater than 0", nameof(value));
+
+            _level = value;
+        }
+    }
+
     public ElementType Type { get; }
 
-    // TODO: add validations
     public Pokemon(string name, int level, ElementType type, List<Attack> attacks)
     {
         Name = name;
         Level = level;
         Type = type;
-        Attacks = attacks;
+        Attacks = attacks ?? [];
     }
 
     public void RaiseLevel()
     {
-        Console.WriteLine($"{Name} leaveled up to {++Level}");
+        Level++;
+        ConsoleUI.Output(GetLevelMessage());
     }
 
     public void Attack()
     {
-        var prompt = $"Choose Attack:\n{AttackList()}";
-        var attackIndex = GetValidIndex(prompt, 0, Attacks.Count);
-        PrintAttack(attackIndex - 1);
+        int attackIndex = GetUserAttackIndex();
+        var message = GetAttackMessage(attackIndex - 1);
+        ConsoleUI.Output(message);
     }
 
     public void RandomAttack()
     {
-        int attackIndex = new Random().Next(0, Attacks.Count);
-        PrintAttack(attackIndex);
+        int attackIndex = GetRandomAttackIndex();
+        var message = GetAttackMessage(attackIndex);
+        ConsoleUI.Output(message);
     }
 
-    // TODO: add validation
-    private void PrintAttack(int attackIndex)
+    internal string GetLevelMessage()
     {
-        var attack = Attacks[attackIndex].Use(Level);
-        Console.WriteLine(attack);
+        return $"{Name} leveled up to {Level}";
     }
 
-    // TODO: Attacks.ToString()?
-    private string AttackList()
+    internal string GetAttackList()
     {
         var builder = new StringBuilder();
         for (int i = 0; i < Attacks.Count; i++)
@@ -55,22 +80,23 @@ internal abstract class Pokemon
         return builder.ToString();
     }
 
-    // TODO: move to helpers
-    private static int GetValidIndex(string prompt, int min, int max = int.MaxValue)
+    internal int GetRandomAttackIndex()
     {
-        int index = -1;
-        bool isValid = false;
-        do
-        {
-            Console.WriteLine(prompt);
-            var input = Console.ReadLine()?.Trim() ?? "";
+        return _random.Next(Attacks.Count);
+    }
 
-            if (int.TryParse(input, out index))
-            {
-                if (min < index && index <= max)
-                    isValid = true;
-            }
-        } while (!isValid);
-        return index;
+    internal int GetUserAttackIndex()
+    {
+        var prompt = $"Choose Attack:\n{GetAttackList()}";
+        var attackIndex = ConsoleUI.GetNumberInRange(prompt, 0, Attacks.Count);
+        return attackIndex;
+    }
+
+    internal string GetAttackMessage(int attackIndex)
+    {
+        if (attackIndex < 0 || attackIndex >= Attacks.Count)
+            throw new ArgumentOutOfRangeException($"'{nameof(attackIndex)}' is not valid");
+
+        return Attacks[attackIndex].Use(Level);
     }
 }
