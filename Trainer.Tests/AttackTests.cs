@@ -19,18 +19,11 @@ public class AttackTests
     }
 
     [Fact]
-    public void TotalPower_ShouldThrowArgumentException_WhenLevelIsZero()
+    public void TotalPower_ShouldThrowArgumentException_WhenLevelIsZeroOrNegative()
     {
         var attack = new Attack("Flamethrower", ElementType.Fire, 12);
 
         Assert.Throws<ArgumentException>(() => attack.TotalPower(0));
-    }
-
-    [Fact]
-    public void TotalPower_ShouldThrowArgumentException_WhenLevelIsNegative()
-    {
-        var attack = new Attack("Flamethrower", ElementType.Fire, 12);
-
         Assert.Throws<ArgumentException>(() => attack.TotalPower(-10));
     }
 
@@ -45,42 +38,25 @@ public class AttackTests
     }
 
     [Fact]
-    public void Use_ShouldThrowArgumentException_WhenLevelIsZero()
+    public void Use_ShouldThrowArgumentException_WhenLevelIsZeroOrNegative()
     {
         var attack = new Attack("Flamethrower", ElementType.Fire, 12);
 
         Assert.Throws<ArgumentException>(() => attack.Use(0));
-    }
-
-    [Fact]
-    public void Use_ShouldThrowArgumentException_WhenLevelIsNegative()
-    {
-        var attack = new Attack("Flamethrower", ElementType.Fire, 12);
-
         Assert.Throws<ArgumentException>(() => attack.Use(-10));
     }
 
     [Fact]
-    public void Attack_ShouldThrowArgumentException_WhenNameIsEmpty()
+    public void Constructor_ShouldThrowArgumentException_WhenNameIsEmptyOrNull()
     {
         Assert.Throws<ArgumentException>(() => new Attack("  ", ElementType.Fire, 12));
-    }
-
-    [Fact]
-    public void Attack_ShouldThrowArgumentException_WhenNameIsNull()
-    {
         Assert.Throws<ArgumentException>(() => new Attack(null, ElementType.Fire, 12));
     }
 
     [Fact]
-    public void Attack_ShouldThrowArgumentException_WhenBasePowerIsZero()
+    public void Constructor_ShouldThrowArgumentException_WhenBasePowerIsZeroOrNegative()
     {
         Assert.Throws<ArgumentException>(() => new Attack("Flamethrower", ElementType.Fire, 0));
-    }
-
-    [Fact]
-    public void Attack_ShouldThrowArgumentException_WhenBasePowerIsNegative()
-    {
         Assert.Throws<ArgumentException>(() => new Attack("Flamethrower", ElementType.Fire, -3));
     }
 }
