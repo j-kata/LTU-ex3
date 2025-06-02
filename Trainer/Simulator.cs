@@ -35,8 +35,7 @@ internal class Simulator
             }
             var prompt = "Do you want to see the next round? y/n";
             var input = ConsoleUI.GetSpecificString(prompt, ["y", "n"]);
-            isRunning = input != "n";
-        }
-        
+            isRunning = !input.Equals("n", StringComparison.CurrentCultureIgnoreCase);
+        }   
     }
 }
