@@ -1,10 +1,12 @@
-namespace TrainerSimulator;
+using Trainer.Abstractions;
+
+namespace Trainer;
 
 internal class Simulator
 {
-    private List<Pokemon.Pokemon> _pokemon = [];
+    private List<Pokemon> _pokemon = [];
 
-    public Simulator(List<Pokemon.Pokemon> pokemon)
+    public Simulator(List<Pokemon> pokemon)
     {
         _pokemon = pokemon;
     }

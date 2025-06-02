@@ -1,4 +1,6 @@
-namespace TrainerSimulator.Pokemon;
+using Trainer.Abstractions;
+
+namespace Trainer.PokemonType;
 
 internal class Charmander : FirePokemon
 {

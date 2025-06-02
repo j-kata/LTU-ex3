@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.2.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrainerSimulator", "TrainerSimulator\TrainerSimulator.csproj", "{18259EB1-C959-0C78-9F4B-E0AD2FB36E1E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trainer", "Trainer\Trainer.csproj", "{18259EB1-C959-0C78-9F4B-E0AD2FB36E1E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trainer.Tests", "Trainer.Tests\Trainer.Tests.csproj", "{F8DF111E-5EE8-4EAA-A9B4-3E7C5AB8AFDE}"
 EndProject

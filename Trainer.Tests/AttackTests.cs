@@ -1,7 +1,7 @@
 ﻿namespace Trainer.Tests;
 
-using TrainerSimulator;
-using TrainerSimulator.Helpers;
+using Trainer;
+using Trainer.Helpers;
 
 public class AttackTests
 {

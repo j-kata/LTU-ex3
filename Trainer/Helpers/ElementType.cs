@@ -1,4 +1,4 @@
-namespace TrainerSimulator.Helpers;
+namespace Trainer.Helpers;
 
 internal enum ElementType
 {

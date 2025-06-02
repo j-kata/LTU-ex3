@@ -1,6 +1,6 @@
-using TrainerSimulator.Helpers;
+using Trainer.Helpers;
 
-namespace TrainerSimulator.Pokemon;
+namespace Trainer.Abstractions;
 
 internal class WaterPokemon : Pokemon
 {

@@ -1,6 +1,7 @@
-using TrainerSimulator.Pokemon;
+using Trainer.Abstractions;
+using Trainer.PokemonType;
 
-namespace TrainerSimulator.Helpers;
+namespace Trainer.Helpers;
 
 internal static class Seed
 {
@@ -21,7 +22,7 @@ internal static class Seed
     };
 
     // TODO: add other pokemon. Is dictionary the best way?
-    public static List<Pokemon.Pokemon> GetPokemon()
+    public static List<Pokemon> GetPokemon()
     {
         return
         [

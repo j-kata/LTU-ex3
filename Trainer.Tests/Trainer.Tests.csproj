@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TrainerSimulator\TrainerSimulator.csproj" />
+    <ProjectReference Include="..\Trainer\Trainer.csproj" />
   </ItemGroup>
 
 </Project>

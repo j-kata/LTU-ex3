@@ -1,4 +1,4 @@
-namespace TrainerSimulator;
+namespace Trainer.Abstractions;
 
 public interface IEvolvable
 {

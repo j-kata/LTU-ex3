@@ -1,6 +1,6 @@
-using TrainerSimulator.Helpers;
+using Trainer.Helpers;
 
-namespace TrainerSimulator;
+namespace Trainer;
 
 internal class Attack
 {

@@ -1,7 +1,7 @@
 using System.Text;
-using TrainerSimulator.Helpers;
+using Trainer.Helpers;
 
-namespace TrainerSimulator.Pokemon;
+namespace Trainer.Abstractions;
 
 // TODO: rename folder. Move named classes out of this folder
 internal abstract class Pokemon
